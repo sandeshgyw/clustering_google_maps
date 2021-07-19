@@ -238,8 +238,9 @@ class ClusteringHelper {
 
       if (a.count == 1) {
         if (bitmapAssetPathForSingleMarker != null) {
-          bitmapDescriptor =
-              BitmapDescriptor.fromAsset(bitmapAssetPathForSingleMarker);
+          bitmapDescriptor = await BitmapDescriptor.fromAssetImage(
+              ImageConfiguration(size: Size(48, 48)),
+              bitmapAssetPathForSingleMarker);
         } else {
           bitmapDescriptor = BitmapDescriptor.defaultMarker;
         }
@@ -291,7 +292,9 @@ class ClusteringHelper {
               title:
                   "${p.location.latitude.toStringAsFixed(2)},${p.location.longitude.toStringAsFixed(2)}"),
           icon: bitmapAssetPathForSingleMarker != null
-              ? BitmapDescriptor.fromAsset(bitmapAssetPathForSingleMarker)
+              ? BitmapDescriptor.fromAssetImage(
+                  ImageConfiguration(size: Size(48, 48)),
+                  bitmapAssetPathForSingleMarker)
               : BitmapDescriptor.defaultMarker,
         );
       }).toSet();
